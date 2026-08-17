@@ -2,7 +2,7 @@
 
 > A powerful file browser for PS3 with ELF/SELF launching capabilities!
 
-![vLaunchSELF Screenshot](https://github.com/VTSTech/vLaunchSELF/raw/main/screenshot.png)
+<img width="1820" height="1079" alt="image" src="https://github.com/user-attachments/assets/ba61b0b9-3a75-4345-8f15-8a1e4a887635" />
 
 ## Features
 
