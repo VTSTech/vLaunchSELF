@@ -241,6 +241,49 @@ static void draw_background_gradient(void) {
  * List files in the current directory
  * Populates the global files[] array with directory entries
  */
+static int device_exists(const char *path) {
+    sysFSStat stat;
+    int result = sysFsStat(path, &stat) == 0;
+    printf("Device check: %s = %s\n", path, result ? "FOUND" : "NOT FOUND");
+    return result;
+}
+
+static int available_devices_count = 0;
+static char available_device_paths[5][MAX_PATH];
+
+static void scan_available_devices(void) {
+    const char *devices[] = {
+        "/dev_bdvd",
+        "/dev_hdd0", 
+        "/dev_hdd1",
+        "/dev_flash",
+        "/dev_rewrite"
+    };
+    
+    const size_t device_count = sizeof(devices) / sizeof(devices[0]);
+    available_devices_count = 0;
+    
+    printf("Scanning for available devices...\n");
+    
+    /* Find all available devices */
+    for (size_t i = 0; i < device_count; i++) {
+        if (device_exists(devices[i])) {
+            strncpy(available_device_paths[available_devices_count], devices[i], MAX_PATH - 1);
+            available_device_paths[available_devices_count][MAX_PATH - 1] = '\0';
+            available_devices_count++;
+            printf("✓ Available: %s\n", devices[i]);
+        } else {
+            printf("✗ Not available: %s\n", devices[i]);
+        }
+    }
+    
+    if (available_devices_count == 0) {
+        printf("No devices found, using default: /dev_hdd0\n");
+        strncpy(current_path, "/dev_hdd0", MAX_PATH - 1);
+        current_path[MAX_PATH - 1] = '\0';
+    }
+}
+
 static void list_directory(void) {
     printf("LIST: %s\n", current_path);
     file_count = 0;
@@ -301,32 +344,6 @@ static void draw_text_with_path(const char *path, int y) {
     DrawString(SX(20), SY(y), (char*)path);
 }
 
-/**
- * Draw the file list with automatic scrolling support
- * Ensures the selected item is always visible
- */
-static void draw_file_list_small(void) {
-    SetFontSize(SF(14), SF(14));
-    
-    int visible_items = 14;  /* Show 14 items max */
-    int start_idx = (selected_index >= visible_items) ? selected_index - visible_items + 1 : 0;
-    int end_idx = start_idx + visible_items;
-    if (end_idx > file_count) end_idx = file_count;
-    
-    for (int i = start_idx; i < end_idx; i++) {
-        int display_idx = i - start_idx;
-        if (i == selected_index) SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue */
-        else SetFontColor(0xffffffff, 0);
-        char line[280];
-        snprintf(line, sizeof(line), "  %s%s", files[i].is_dir ? "[DIR] " : "      ", files[i].name);
-        DrawString(SX(20), SY(95) + display_idx * SY(28), line);
-    }
-    
-    if (file_count == 0) {
-        SetFontColor(0xff808080, 0);
-        DrawString(SX(20), SY(200), (char*)"Empty or error reading directory");
-    }
-}
 
 /**
  * Launch an ELF/SELF file
@@ -354,10 +371,14 @@ static void launch_elf_file(const char *filepath) {
     }
     
     printf("Launching executable: %s\n", filepath);
+    printf("File extension: %s\n", ext);
+    printf("Is ELF: %d, Is SELF: %d\n", is_elf, is_self);
     
-    /* Use sysProcessExitSpawn2 to terminate this process and launch the new one */
+    /* Use sysProcessExitSpawn2 to terminate current process and launch the new one */
     sysProcessExitSpawn2(filepath, NULL, NULL, NULL, 0, 0x100000, 
         SYS_PROCESS_SPAWN_STACK_SIZE_1M);
+    
+    printf("Launched executable - this message should not be seen\n");
     
     /* This point will not be reached */
 }
@@ -418,11 +439,133 @@ int main(int argc, char *argv[]) {
     /* Set up callback */
     sysUtilRegisterCallback(0, sysutil_exit_callback, NULL);
     
-    /* Load initial directory */
-    strncpy(current_path, "/dev_hdd0", MAX_PATH - 1);
-    current_path[MAX_PATH - 1] = '\0';
-    list_directory();
+    printf("=== vLaunchSELF v1 Starting ===\n");
+    
+    /* Scan for available devices */
+    scan_available_devices();
+    
+    if (available_devices_count == 0) {
+        /* No devices found, use default */
+        list_directory();
+    } else if (available_devices_count == 1) {
+        /* Only one device, use it directly */
+        printf("Only one device available: %s\n", current_path);
+        list_directory();
+    } else {
+        /* Multiple devices, show selection menu */
+        printf("Multiple devices available. Select one:\n");
+        for (int i = 0; i < available_devices_count; i++) {
+            printf("  [%d] %s\n", i, available_device_paths[i]);
+        }
+        printf("Use UP/DOWN to select, CROSS to choose\n");
+        
+        /* Start with first device selected */
+        selected_index = 0;
+        strncpy(current_path, available_device_paths[0], MAX_PATH - 1);
+        current_path[MAX_PATH - 1] = '\0';
+        
+        /* Set device selection mode */
+        int device_selection_mode = 1;
+        
+        while (device_selection_mode) {
+            sysUtilCheckCallback();
+            ioPadGetInfo(&padinfo);
+            
+            if (padinfo.status[0]) {
+                ioPadGetData(0, &paddata);
+                
+                /* Handle all buttons with debouncing */
+                /* CIRCLE: Exit device selection */
+                if (paddata.BTN_CIRCLE) {
+                    circle_counter--;
+                    if (circle_counter <= 0) {
+                        printf("CIRCLE pressed - exit\n");
+                        running = 0;
+                        device_selection_mode = 0;
+                        continue;
+                    }
+                    circle_counter = INPUT_DELAY_FRAMES;
+                } else {
+                    circle_counter = 0;
+                }
+                
+                /* Handle UP with debouncing */
+                if (paddata.BTN_UP) {
+                    up_counter--;
+                    if (up_counter <= 0) {
+                        selected_index = (selected_index + available_devices_count - 1) % available_devices_count;
+                        strncpy(current_path, available_device_paths[selected_index], MAX_PATH - 1);
+                        current_path[MAX_PATH - 1] = '\0';
+                        printf("Selected: %s\n", current_path);
+                        up_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else {
+                    up_counter = 0;
+                }
+                
+                /* Handle DOWN with debouncing */
+                if (paddata.BTN_DOWN) {
+                    down_counter--;
+                    if (down_counter <= 0) {
+                        selected_index = (selected_index + 1) % available_devices_count;
+                        strncpy(current_path, available_device_paths[selected_index], MAX_PATH - 1);
+                        current_path[MAX_PATH - 1] = '\0';
+                        printf("Selected: %s\n", current_path);
+                        down_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else {
+                    down_counter = 0;
+                }
+                
+                /* Handle CROSS with debouncing */
+                if (paddata.BTN_CROSS) {
+                    cross_counter--;
+                    if (cross_counter <= 0) {
+                        printf("Selected device %d: %s\n", selected_index, current_path);
+                        device_selection_mode = 0;
+                        cross_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else {
+                    cross_counter = 0;
+                }
+            }
+            
+            /* Draw device selection screen */
+            tiny3d_Clear(0x303030ff, TINY3D_CLEAR_ALL);
+            draw_background_gradient();
+            
+            /* Draw title */
+            SetFontSize(SF(22), SF(22));
+            SetFontColor(0xffffffff, 0);
+            DrawString(SX(35), SY(10), (char*)"Select Device");
+            
+            /* Draw device list */
+            SetFontSize(SF(16), SF(16));
+            for (int i = 0; i < available_devices_count; i++) {
+                if (i == selected_index) {
+                    SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue for selected */
+                } else {
+                    SetFontColor(0xffffffff, 0);
+                }
+                char line[280];
+                snprintf(line, sizeof(line), "  [%d] %s", i, available_device_paths[i]);
+                DrawString(SX(20), SY(60 + i * SF(30)), line);
+            }
+            
+            /* Draw controls */
+            SetFontSize(SF(14), SF(14));
+            SetFontColor(0xffffffff, 0);
+            DrawString(SX(35), SY(350), (char*)"[X] Select  [O] Exit  [Up/Down] Navigate");
+            
+            tiny3d_Flip();
+        }
+        
+        /* Device selected, now list its contents */
+        list_directory();
+    }
+    
     printf("Total files: %d\n", file_count);
+    printf("Current path: %s\n", current_path);
     
     /* Main loop */
     while (running) {
@@ -527,7 +670,7 @@ int main(int argc, char *argv[]) {
         /* Draw title */
         SetFontSize(SF(22), SF(22));
         SetFontColor(0xffffffff, 0);
-        DrawString(SX(35), SY(10), (char*)"vLaunchSELF v0");
+        DrawString(SX(35), SY(10), (char*)"vLaunchSELF v1");
         
         /* Draw controls */
         SetFontSize(SF(14), SF(14));

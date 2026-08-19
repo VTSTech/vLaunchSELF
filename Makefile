@@ -47,21 +47,33 @@ $(TARGET_STRIPPED): $(TARGET_ELF)
 src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Create a SELF file from ELF (using make_self for proper signing)
+# Create a SELF file from ELF (exact same process as PKG EBOOT.BIN)
 self: elf
 	@mkdir -p build
 	@$(PS3DEV)/ppu/bin/ppu-strip $(TARGET_ELF) -o ./build/$(TARGET_STRIPPED)
-	@$(PS3DEV)/bin/make_self ./build/$(TARGET_STRIPPED) $(TARGET).self
-	@echo "Built SELF: $(TARGET).self"
+	@echo "Creating SELF with exact same command as PKG..."
+	@$(PS3DEV)/bin/make_self_npdrm ./build/$(TARGET_STRIPPED) $(TARGET).self $(CONTENTID) 2>/dev/null || $(PS3DEV)/bin/make_self ./build/$(TARGET_STRIPPED) $(TARGET).self
+	@echo "Checking if SELF file is valid..."
+	@hexdump -C $(TARGET).self | head -5 || echo "hexdump failed"
+	@ls -la $(TARGET).self
+	@echo "Comparing with PKG EBOOT.BIN..."
+	@ls -la build/pkg/USRDIR/EBOOT.BIN
+	@diff $(TARGET).self build/pkg/USRDIR/EBOOT.BIN > /dev/null 2>&1 && echo "✓ Files are identical" || echo "⚠ Files are different"
 
 # Create a PKG package for PS3 (uses stripped ELF for RPCS3 compatibility)
 pkg: stripped
 	@mkdir -p build/pkg/USRDIR
+	@echo "Copying stripped ELF to EBOOT.BIN..."
 	@cp $(TARGET_STRIPPED) build/pkg/USRDIR/EBOOT.BIN
+	@echo "Before signing:"
+	@ls -la build/pkg/USRDIR/EBOOT.BIN
 	@$(PS3DEV)/bin/sprxlinker build/pkg/USRDIR/EBOOT.BIN 2>/dev/null || true
 	@$(PS3DEV)/bin/sfo -f sfo.xml build/pkg/PARAM.SFO
 	@# Sign EBOOT.BIN with NPDRM for real PS3 compatibility
+	@echo "Applying NPDRM signing..."
 	@$(PS3DEV)/bin/make_self_npdrm build/pkg/USRDIR/EBOOT.BIN build/pkg/USRDIR/EBOOT.BIN $(CONTENTID) 2>/dev/null || true
+	@echo "After signing:"
+	@ls -la build/pkg/USRDIR/EBOOT.BIN
 	@$(PS3DEV)/bin/pkg --contentid $(CONTENTID) build/pkg/ build/$(TARGET).pkg
 	@echo "Built PKG: build/$(TARGET).pkg"
 
