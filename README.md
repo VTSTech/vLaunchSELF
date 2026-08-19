@@ -74,28 +74,6 @@ This project is open source and free for homebrew development.
 **GitHub**: [github.com/VTSTech](https://github.com/VTSTech)  
 **Documentation**: [PSL1GHT Documentation](https://github.com/VTSTech/PSL1GHT)
 
-## Changelog
-
-### v0.3
-- ✅ NPDRM signing enabled for real PS3 compatibility
-- ✅ Fixed PKG installation error 80029530
-- ✅ Improved file browser navigation
-- ✅ Added scrolling file list
-- ✅ Button debouncing for smooth navigation
-
-### v0.2
-- ✅ ELF/SELF launching via sysProcessExitSpawn2
-- ✅ Triangle button for parent directory
-- ✅ Controls legend display
-- ✅ Footer credits
-- ✅ Scrolling file list support
-
-### v0.1
-- ✅ Initial release
-- ✅ Basic file browsing
-- ✅ Font rendering system
-- ✅ Directory navigation
-
 ---
 
 **Home PS3 Homebrew Development** | **PS3 File Browser** | **PSL1GHT Development**
