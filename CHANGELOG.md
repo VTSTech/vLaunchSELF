@@ -1,6 +1,5 @@
 # vLaunchSELF Changelog
 
-## [Unreleased]
 
 ## [1.0.0] - 08-19-2026 2:29:39 PM
 
