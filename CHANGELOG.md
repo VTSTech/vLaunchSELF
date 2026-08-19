@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.0.0] - 2024-12-10
+## [1.0.0] - 08-19-2026 2:29:39 PM
 
 ### Added
 - **Device Selection Menu**: User can now select which device to browse from available devices
@@ -40,7 +40,7 @@
 - **Smart Navigation**: Triangle button context-aware (up vs device selection)
 - **TitleID**: VTSTECH02 (PS3 application identifier)
 
-## [0.1.0] - 2024-12-10
+## [0.1.0] - 08-17-2026 1:00:39 PM
 
 ### Added
 - Initial release of vLaunchSELF - ELF/SELF launcher for PS3
