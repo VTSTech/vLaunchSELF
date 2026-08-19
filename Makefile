@@ -40,7 +40,8 @@ $(TARGET_ELF): $(OFILES)
 	$(CC) $(OFILES) $(LDFLAGS) $(LIBS) -o $@
 
 $(TARGET_STIPPED): $(TARGET_ELF)
-	$(PS3DEV)/ppu/bin/ppu-strip $< -o $@
+	@mkdir -p build
+	$(PS3DEV)/ppu/bin/ppu-strip $(TARGET_ELF) -o build/$(TARGET)-stripped.elf
 
 -include $(OFILES:.o=.d)
 
@@ -49,14 +50,15 @@ src/%.o: src/%.c
 
 # Create a SELF file from ELF (using make_self for proper signing)
 self: elf
-	@$(PS3DEV)/bin/ppu-strip $(TARGET).elf -o build/$(TARGET).elf.stripped
-	@$(PS3DEV)/bin/make_self build/$(TARGET).elf.stripped $(TARGET).self
+	@mkdir -p build
+	@$(PS3DEV)/ppu/bin/ppu-strip $(TARGET).elf -o build/$(TARGET)-stripped.elf
+	@$(PS3DEV)/bin/make_self build/$(TARGET)-stripped.elf $(TARGET).self
 	@echo "Built SELF: $(TARGET).self"
 
 # Create a PKG package for PS3 (uses stripped ELF for RPCS3 compatibility)
 pkg: stripped
 	@mkdir -p build/pkg/USRDIR
-	@cp $(TARGET_STIPPED) build/pkg/USRDIR/EBOOT.BIN
+	@cp build/$(TARGET)-stripped.elf build/pkg/USRDIR/EBOOT.BIN
 	@$(PS3DEV)/bin/sprxlinker build/pkg/USRDIR/EBOOT.BIN 2>/dev/null || true
 	@$(PS3DEV)/bin/sfo -f sfo.xml build/pkg/PARAM.SFO
 	@# Sign EBOOT.BIN with NPDRM for real PS3 compatibility
