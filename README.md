@@ -1,8 +1,8 @@
 # vLaunchSELF - PS3 ELF/SELF Launcher
 
 > A powerful file browser for PS3 with ELF/SELF launching capabilities!
-
-<img width="1828" height="1079" alt="image" src="https://github.com/user-attachments/assets/28024660-020a-4896-8371-96c39a884bdf" />
+> 
+<img width="1828" height="1079" alt="image" src="https://github.com/user-attachments/assets/24ebb83f-faf3-40a3-9bd2-4064771511ad" />
 
 ## Features
 
