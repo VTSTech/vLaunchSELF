@@ -48,17 +48,9 @@ make clean
 3. Launch from Games section
 4. Navigate to any `.elf` or `.self` file to execute it
 
-## Release History
-
-| Version | Date | Description |
-|---------|------|-------------|
-| v0.1 | 2024 | Initial release |
-| v0.2 | 2024 | Added scrolling, controls legend, footer credits |
-| v0.3 | 2024 | NPDRM signing for real PS3 compatibility |
-
 ## Technical Details
 
-- **Target ID**: HLFB00001
+- **Target ID**: VTSTECH02
 - **Title**: vLaunchSELF PS3
 - **Format**: ELF/SELF launcher
 - **Dependencies**: librsx, libtiny3d, libfont3d, libsysmodule, libsysfs
