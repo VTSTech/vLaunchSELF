@@ -299,21 +299,22 @@ static void format_file_size(u64 size, char* buffer, size_t buffer_size) {
 }
 
 static void format_timestamp(u64 mtime, char* buffer, size_t buffer_size) {
-    // PS3 timestamp is in microseconds since Unix epoch
-    // Convert to human readable format
-    // Note: Many PS3 files may have zero timestamps (1970 epoch)
-    time_t timestamp = mtime / 1000000;
+    // PS3 uses Unix timestamps in seconds
+    time_t timestamp = (time_t)mtime;
+    struct tm* tm_info;
+    char temp_buffer[64];
     
     if (timestamp == 0) {
-        snprintf(buffer, buffer_size, "No date");
+        snprintf(buffer, buffer_size, "System file");
         return;
     }
     
-    struct tm* tm_info = gmtime(&timestamp);  // Use gmtime for consistency
+    tm_info = gmtime(&timestamp);
     if (tm_info) {
-        strftime(buffer, buffer_size, "%Y-%m-%d", tm_info);  // Shorter format
+        strftime(temp_buffer, sizeof(temp_buffer), "%m-%d-%Y %H:%M", tm_info);
+        snprintf(buffer, buffer_size, "%s", temp_buffer);
     } else {
-        snprintf(buffer, buffer_size, "No date");
+        snprintf(buffer, buffer_size, "Invalid date");
     }
 }
 

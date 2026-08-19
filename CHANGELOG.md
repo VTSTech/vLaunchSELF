@@ -12,8 +12,8 @@
 - **User Choice**: No longer auto-selects "best" device - user decides which to explore
 - **Visual Feedback**: Selected device highlighted in cyan during selection
 - **Device Status Display**: Shows which devices are available/not available during scan
-- **File Size Display**: Shows file sizes in human-readable format (B, KB, MB, GB)
-- **File Timestamps**: Displays last modified date and time for files
+- **File Size Display**: Shows file sizes in human-readable format (B, KB,MB, GB)
+- **File Timestamps**: Displays last modified date and time in MM-DD-YYYY HH:MM format
 - **Device Re-selection**: Press Triangle at device root to show device selection menu again
 - **Enhanced File List**: Improved file listing with size and time information
 
@@ -36,8 +36,9 @@
 - **Fallback Behavior**: If only one device available, uses it directly (no selection needed)
 - **Error Handling**: Graceful handling when no devices found
 - **File Size Formatting**: Automatic conversion to B/KB/MB/GB units
-- **Timestamp Display**: Human-readable date/time format from PS3 timestamps
+- **Timestamp Display**: MM-DD-YYYY HH:MM format with time information
 - **Smart Navigation**: Triangle button context-aware (up vs device selection)
+- **TitleID**: VTSTECH02 (PS3 application identifier)
 
 ## [0.1.0] - 2024-12-10
 
@@ -117,8 +118,8 @@
 - **License**: MIT
 - **Target**: PS3 (RPCS3 and real hardware)
 - **Build Tools**: PSL1GHT, make_self_npdrm, pkg utilities
-- **APPID**: HLFB00001
-- **ContentID**: UP0001-HLFB00001_00-0000000000000000
+- **APPID**: VTSTECH02
+- **ContentID**: UP0001-VTSTECH02_00-0000000000000000
 
 ### Key Features in v1.0.0
 - **User Device Selection**: Choose which PS3 device to explore

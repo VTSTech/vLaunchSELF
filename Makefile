@@ -7,7 +7,7 @@
 TARGET := vLaunchSELF
 TARGET_ELF := $(TARGET).elf
 TARGET_STRIPPED := $(TARGET)-stripped.elf
-APPID := HLFB00001
+APPID := VTSTECH02
 CONTENTID := UP0001-$(APPID)_00-0000000000000000
 
 # PS3SDK paths - assumes PSL1GHT is set up at /usr/local/ps3dev
