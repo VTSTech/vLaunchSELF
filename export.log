@@ -1,844 +1,0 @@
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 02:51:24 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=19/21)
-Makefile
-          2.40K 100%    2.29MB/s    0:00:00            2.40K 100%    2.29MB/s    0:00:00 (xfr#2, to-chk=18/21)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=17/21)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=16/21)
-export.log
-          1.05K 100%    1.00MB/s    0:00:00            1.05K 100%    1.00MB/s    0:00:00 (xfr#5, to-chk=15/21)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=14/21)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=13/21)
-vLaunchSELF.elf
-         32.77K   2%   15.62MB/s    0:00:00            1.21M 100%    7.27MB/s    0:00:00 (xfr#8, to-chk=12/21)
-vLaunchSELF.self
-         32.77K  34%  200.00kB/s    0:00:00           94.54K 100%  573.47kB/s    0:00:00 (xfr#9, to-chk=11/21)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  197.53kB/s    0:00:01          337.39K 100%    1.59MB/s    0:00:00 (xfr#10, to-chk=8/21)
-build/vLaunchSELF.pkg
-         32.77K  33%  155.34kB/s    0:00:00           98.48K 100%  464.60kB/s    0:00:00 (xfr#11, to-chk=7/21)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    4.88kB/s    0:00:00            1.04K 100%    4.88kB/s    0:00:00 (xfr#12, to-chk=5/21)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  142.22kB/s    0:00:00           96.86K 100%  418.56kB/s    0:00:00 (xfr#13, to-chk=3/21)
-src/
-src/main.c
-         23.64K 100%  102.15kB/s    0:00:00           23.64K 100%  102.15kB/s    0:00:00 (xfr#14, to-chk=2/21)
-src/main.d
-          2.12K 100%    9.15kB/s    0:00:00            2.12K 100%    9.15kB/s    0:00:00 (xfr#15, to-chk=1/21)
-src/main.o
-         20.89K 100%   90.26kB/s    0:00:00           20.89K 100%   90.26kB/s    0:00:00 (xfr#16, to-chk=0/21)
-
-sent 1.90M bytes  received 355 bytes  3.81M bytes/sec
-total size is 1.90M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 16[0m
-[0;32mDestination files: 16[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 14:46 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   94544 Aug 19 14:46 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 02:51:25 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 02:52:50 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=19/21)
-Makefile
-          2.40K 100%    2.29MB/s    0:00:00            2.40K 100%    2.29MB/s    0:00:00 (xfr#2, to-chk=18/21)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=17/21)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=16/21)
-export.log
-          4.13K 100%    3.94MB/s    0:00:00            4.13K 100%    3.94MB/s    0:00:00 (xfr#5, to-chk=15/21)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=14/21)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=13/21)
-vLaunchSELF.elf
-         32.77K   2%   31.25MB/s    0:00:00            1.21M 100%    8.20MB/s    0:00:00 (xfr#8, to-chk=12/21)
-vLaunchSELF.self
-         32.77K  34%  222.22kB/s    0:00:00           94.54K 100%  632.38kB/s    0:00:00 (xfr#9, to-chk=11/21)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  217.69kB/s    0:00:01          337.39K 100%    1.79MB/s    0:00:00 (xfr#10, to-chk=8/21)
-build/vLaunchSELF.pkg
-         32.77K  33%  173.91kB/s    0:00:00           98.48K 100%  519.85kB/s    0:00:00 (xfr#11, to-chk=7/21)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    5.49kB/s    0:00:00            1.04K 100%    5.49kB/s    0:00:00 (xfr#12, to-chk=5/21)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  155.34kB/s    0:00:00           96.86K 100%  459.19kB/s    0:00:00 (xfr#13, to-chk=3/21)
-src/
-src/main.c
-         23.64K 100%  112.07kB/s    0:00:00           23.64K 100%  111.53kB/s    0:00:00 (xfr#14, to-chk=2/21)
-src/main.d
-          2.12K 100%    9.99kB/s    0:00:00            2.12K 100%    9.99kB/s    0:00:00 (xfr#15, to-chk=1/21)
-src/main.o
-         20.89K 100%   98.54kB/s    0:00:00           20.89K 100%   98.54kB/s    0:00:00 (xfr#16, to-chk=0/21)
-
-sent 1.91M bytes  received 355 bytes  3.81M bytes/sec
-total size is 1.90M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 16[0m
-[0;32mDestination files: 16[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 14:52 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   94544 Aug 19 14:52 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 02:52:51 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:00:23 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=14/16)
-Makefile
-          2.42K 100%    2.31MB/s    0:00:00            2.42K 100%    2.31MB/s    0:00:00 (xfr#2, to-chk=13/16)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=12/16)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=11/16)
-export.log
-          7.71K 100%    7.36MB/s    0:00:00            7.71K 100%    7.36MB/s    0:00:00 (xfr#5, to-chk=10/16)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=9/16)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=8/16)
-vLaunchSELF.elf
-         32.77K   2%   31.25MB/s    0:00:00            1.21M 100%    8.08MB/s    0:00:00 (xfr#8, to-chk=7/16)
-vLaunchSELF.self
-         32.77K  34%  220.69kB/s    0:00:00           94.99K 100%  635.38kB/s    0:00:00 (xfr#9, to-chk=6/16)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  219.18kB/s    0:00:01          337.39K 100%    1.83MB/s    0:00:00 (xfr#10, to-chk=3/16)
-src/
-src/main.c
-         22.85K 100%  126.05kB/s    0:00:00           22.85K 100%  126.05kB/s    0:00:00 (xfr#11, to-chk=2/16)
-src/main.d
-          2.12K 100%   11.62kB/s    0:00:00            2.12K 100%   11.62kB/s    0:00:00 (xfr#12, to-chk=1/16)
-src/main.o
-         22.46K 100%  123.24kB/s    0:00:00           22.46K 100%  123.24kB/s    0:00:00 (xfr#13, to-chk=0/16)
-
-sent 1.71M bytes  received 286 bytes  1.14M bytes/sec
-total size is 1.71M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 13[0m
-[0;32mDestination files: 13[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 14:59 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   94992 Aug 19 14:59 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:00:24 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:01:34 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=14/16)
-Makefile
-          2.42K 100%    2.31MB/s    0:00:00            2.42K 100%    2.31MB/s    0:00:00 (xfr#2, to-chk=13/16)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=12/16)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=11/16)
-export.log
-         10.99K 100%   10.48MB/s    0:00:00           10.99K 100%   10.48MB/s    0:00:00 (xfr#5, to-chk=10/16)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=9/16)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=8/16)
-vLaunchSELF.elf
-         32.77K   2%   15.62MB/s    0:00:00            1.21M 100%    9.80MB/s    0:00:00 (xfr#8, to-chk=7/16)
-vLaunchSELF.self
-         32.77K  34%  271.19kB/s    0:00:00           95.04K 100%  779.94kB/s    0:00:00 (xfr#9, to-chk=6/16)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  268.91kB/s    0:00:01          337.39K 100%    2.01MB/s    0:00:00 (xfr#10, to-chk=3/16)
-src/
-src/main.c
-         23.00K 100%  138.67kB/s    0:00:00           23.00K 100%  138.67kB/s    0:00:00 (xfr#11, to-chk=2/16)
-src/main.d
-          2.12K 100%   12.77kB/s    0:00:00            2.12K 100%   12.77kB/s    0:00:00 (xfr#12, to-chk=1/16)
-src/main.o
-         22.84K 100%  137.68kB/s    0:00:00           22.84K 100%  137.68kB/s    0:00:00 (xfr#13, to-chk=0/16)
-
-sent 1.72M bytes  received 286 bytes  3.44M bytes/sec
-total size is 1.72M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 13[0m
-[0;32mDestination files: 13[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:01 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:01 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:01:35 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:05:38 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=20/22)
-Makefile
-          2.31K 100%    2.21MB/s    0:00:00            2.31K 100%    2.21MB/s    0:00:00 (xfr#2, to-chk=19/22)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=18/22)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=17/22)
-export.log
-         13.99K 100%   13.34MB/s    0:00:00           13.99K 100%   13.34MB/s    0:00:00 (xfr#5, to-chk=16/22)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=15/22)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=14/22)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=13/22)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=12/22)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    2.75MB/s    0:00:00 (xfr#10, to-chk=11/22)
-vLaunchSELF.elf
-         32.77K   2%  268.91kB/s    0:00:04            1.21M 100%    7.76MB/s    0:00:00 (xfr#11, to-chk=10/22)
-build/
-build/vLaunchSELF.pkg
-         32.77K  33%  213.33kB/s    0:00:00           98.86K 100%  643.65kB/s    0:00:00 (xfr#12, to-chk=7/22)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    6.73kB/s    0:00:00            1.04K 100%    6.73kB/s    0:00:00 (xfr#13, to-chk=5/22)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  200.00kB/s    0:00:00           97.23K 100%  593.46kB/s    0:00:00 (xfr#14, to-chk=3/22)
-src/
-src/main.c
-         23.00K 100%  139.53kB/s    0:00:00           23.00K 100%  139.53kB/s    0:00:00 (xfr#15, to-chk=2/22)
-src/main.d
-          2.12K 100%   12.85kB/s    0:00:00            2.12K 100%   12.85kB/s    0:00:00 (xfr#16, to-chk=1/22)
-src/main.o
-         22.84K 100%  138.54kB/s    0:00:00           22.84K 100%  138.54kB/s    0:00:00 (xfr#17, to-chk=0/22)
-
-sent 1.84M bytes  received 374 bytes  3.68M bytes/sec
-total size is 1.84M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 17[0m
-[0;32mDestination files: 17[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf  337392 Aug 19 15:05 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:05 vLaunchSELF.elf
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:05:39 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:08:56 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=22/24)
-Makefile
-          2.47K 100%    2.36MB/s    0:00:00            2.47K 100%    2.36MB/s    0:00:00 (xfr#2, to-chk=21/24)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=20/24)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=19/24)
-export.log
-         17.79K 100%   16.96MB/s    0:00:00           17.79K 100%   16.96MB/s    0:00:00 (xfr#5, to-chk=18/24)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=17/24)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=16/24)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=15/24)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=14/24)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    2.12MB/s    0:00:00 (xfr#10, to-chk=13/24)
-vLaunchSELF.elf
-         32.77K   2%  207.79kB/s    0:00:05            1.21M 100%    6.21MB/s    0:00:00 (xfr#11, to-chk=12/24)
-vLaunchSELF.self
-         32.77K  34%  171.12kB/s    0:00:00           95.04K 100%  496.32kB/s    0:00:00 (xfr#12, to-chk=11/24)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  170.21kB/s    0:00:01          337.39K 100%    1.38MB/s    0:00:00 (xfr#13, to-chk=8/24)
-build/vLaunchSELF.pkg
-         32.77K  33%  134.45kB/s    0:00:00           98.86K 100%  403.96kB/s    0:00:00 (xfr#14, to-chk=7/24)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    4.25kB/s    0:00:00            1.04K 100%    4.25kB/s    0:00:00 (xfr#15, to-chk=5/24)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  123.08kB/s    0:00:00           97.23K 100%  365.20kB/s    0:00:00 (xfr#16, to-chk=3/24)
-src/
-src/main.c
-         23.00K 100%   86.07kB/s    0:00:00           23.00K 100%   86.07kB/s    0:00:00 (xfr#17, to-chk=2/24)
-src/main.d
-          2.12K 100%    7.92kB/s    0:00:00            2.12K 100%    7.92kB/s    0:00:00 (xfr#18, to-chk=1/24)
-src/main.o
-         22.84K 100%   85.46kB/s    0:00:00           22.84K 100%   85.46kB/s    0:00:00 (xfr#19, to-chk=0/24)
-
-sent 2.28M bytes  received 412 bytes  1.52M bytes/sec
-total size is 2.28M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 19[0m
-[0;32mDestination files: 19[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf  337392 Aug 19 15:05 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:05 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:08 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:08:57 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:16:41 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=22/24)
-Makefile
-          2.32K 100%    2.21MB/s    0:00:00            2.32K 100%    2.21MB/s    0:00:00 (xfr#2, to-chk=21/24)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=20/24)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=19/24)
-export.log
-         21.92K 100%   20.91MB/s    0:00:00           21.92K 100%   20.91MB/s    0:00:00 (xfr#5, to-chk=18/24)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=17/24)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=16/24)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=15/24)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=14/24)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    1.89MB/s    0:00:00 (xfr#10, to-chk=13/24)
-vLaunchSELF.elf
-         32.77K   2%  186.05kB/s    0:00:06            1.21M 100%    5.64MB/s    0:00:00 (xfr#11, to-chk=12/24)
-vLaunchSELF.self
-         32.77K  34%  155.34kB/s    0:00:00           94.91K 100%  449.94kB/s    0:00:00 (xfr#12, to-chk=11/24)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  154.59kB/s    0:00:01          337.39K 100%    1.33MB/s    0:00:00 (xfr#13, to-chk=8/24)
-build/vLaunchSELF.pkg
-         32.77K  33%  130.61kB/s    0:00:00           98.86K 100%  392.47kB/s    0:00:00 (xfr#14, to-chk=7/24)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    4.13kB/s    0:00:00            1.04K 100%    4.13kB/s    0:00:00 (xfr#15, to-chk=5/24)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  122.61kB/s    0:00:00           97.23K 100%  363.81kB/s    0:00:00 (xfr#16, to-chk=3/24)
-src/
-src/main.c
-         23.00K 100%   85.41kB/s    0:00:00           23.00K 100%   85.09kB/s    0:00:00 (xfr#17, to-chk=2/24)
-src/main.d
-          2.12K 100%    7.78kB/s    0:00:00            2.12K 100%    7.78kB/s    0:00:00 (xfr#18, to-chk=1/24)
-src/main.o
-         22.84K 100%   83.85kB/s    0:00:00           22.84K 100%   83.85kB/s    0:00:00 (xfr#19, to-chk=0/24)
-
-sent 2.28M bytes  received 412 bytes  4.56M bytes/sec
-total size is 2.28M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 19[0m
-[0;32mDestination files: 19[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf  337392 Aug 19 15:14 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:14 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   94912 Aug 19 15:16 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:16:42 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:21:21 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=22/24)
-Makefile
-          2.33K 100%    2.23MB/s    0:00:00            2.33K 100%    2.23MB/s    0:00:00 (xfr#2, to-chk=21/24)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=20/24)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=19/24)
-export.log
-         26.07K 100%   24.86MB/s    0:00:00           26.07K 100%   24.86MB/s    0:00:00 (xfr#5, to-chk=18/24)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=17/24)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=16/24)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=15/24)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=14/24)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    1.92MB/s    0:00:00 (xfr#10, to-chk=13/24)
-vLaunchSELF.elf
-         32.77K   2%  184.97kB/s    0:00:06            1.21M 100%    5.48MB/s    0:00:00 (xfr#11, to-chk=12/24)
-vLaunchSELF.self
-         32.77K  34%  151.66kB/s    0:00:00           94.91K 100%  435.15kB/s    0:00:00 (xfr#12, to-chk=11/24)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  149.53kB/s    0:00:02          337.39K 100%    1.28MB/s    0:00:00 (xfr#13, to-chk=8/24)
-build/vLaunchSELF.pkg
-         32.77K  33%  125.49kB/s    0:00:00           98.86K 100%  377.14kB/s    0:00:00 (xfr#14, to-chk=7/24)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    3.97kB/s    0:00:00            1.04K 100%    3.97kB/s    0:00:00 (xfr#15, to-chk=5/24)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  118.52kB/s    0:00:00           97.23K 100%  350.38kB/s    0:00:00 (xfr#16, to-chk=3/24)
-src/
-src/main.c
-         23.00K 100%   82.59kB/s    0:00:00           23.00K 100%   82.29kB/s    0:00:00 (xfr#17, to-chk=2/24)
-src/main.d
-          2.12K 100%    7.58kB/s    0:00:00            2.12K 100%    7.58kB/s    0:00:00 (xfr#18, to-chk=1/24)
-src/main.o
-         22.84K 100%   81.70kB/s    0:00:00           22.84K 100%   81.40kB/s    0:00:00 (xfr#19, to-chk=0/24)
-
-sent 2.29M bytes  received 412 bytes  1.52M bytes/sec
-total size is 2.28M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 19[0m
-[0;32mDestination files: 19[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf  337392 Aug 19 15:21 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:21 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   94912 Aug 19 15:21 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:21:22 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 03:27:07 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=16/18)
-Makefile
-          2.47K 100%    2.36MB/s    0:00:00            2.47K 100%    2.36MB/s    0:00:00 (xfr#2, to-chk=15/18)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=14/18)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=13/18)
-export.log
-         30.19K 100%   28.79MB/s    0:00:00           30.19K 100%   28.79MB/s    0:00:00 (xfr#5, to-chk=12/18)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=11/18)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=10/18)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=9/18)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=8/18)
-vLaunchSELF.elf
-         32.77K   2%   31.25MB/s    0:00:00            1.21M 100%    6.08MB/s    0:00:00 (xfr#10, to-chk=7/18)
-vLaunchSELF.self
-         32.77K  34%  166.67kB/s    0:00:00           95.04K 100%  483.40kB/s    0:00:00 (xfr#11, to-chk=6/18)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  165.80kB/s    0:00:01          337.39K 100%    1.41MB/s    0:00:00 (xfr#12, to-chk=3/18)
-src/
-src/main.c
-         23.00K 100%   97.25kB/s    0:00:00           23.00K 100%   97.25kB/s    0:00:00 (xfr#13, to-chk=2/18)
-src/main.d
-          2.12K 100%    8.95kB/s    0:00:00            2.12K 100%    8.95kB/s    0:00:00 (xfr#14, to-chk=1/18)
-src/main.o
-         22.84K 100%   96.56kB/s    0:00:00           22.84K 100%   96.56kB/s    0:00:00 (xfr#15, to-chk=0/18)
-
-sent 1.76M bytes  received 324 bytes  3.51M bytes/sec
-total size is 1.75M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 15[0m
-[0;32mDestination files: 15[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:26 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:26 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 03:27:08 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 05:09:24 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=23/25)
-Makefile
-          3.00K 100%    2.86MB/s    0:00:00            3.00K 100%    2.86MB/s    0:00:00 (xfr#2, to-chk=22/25)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=21/25)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=20/25)
-export.log
-         32.77K  97%   31.25MB/s    0:00:00           33.67K 100%   32.11MB/s    0:00:00 (xfr#5, to-chk=19/25)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=18/25)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=17/25)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=16/25)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=15/25)
-test_self_creation.sh
-          1.18K 100%    1.13MB/s    0:00:00            1.18K 100%    1.13MB/s    0:00:00 (xfr#10, to-chk=14/25)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    1.41MB/s    0:00:00 (xfr#11, to-chk=13/25)
-vLaunchSELF.elf
-         32.77K   2%  136.75kB/s    0:00:08            1.21M 100%    4.25MB/s    0:00:00 (xfr#12, to-chk=12/25)
-vLaunchSELF.self
-         32.77K  34%  117.22kB/s    0:00:00           95.04K 100%  338.73kB/s    0:00:00 (xfr#13, to-chk=11/25)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  116.36kB/s    0:00:02          337.39K 100%    1.02MB/s    0:00:00 (xfr#14, to-chk=8/25)
-build/vLaunchSELF.pkg
-         32.77K  33%  100.63kB/s    0:00:00           98.86K 100%  302.65kB/s    0:00:00 (xfr#15, to-chk=7/25)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    3.18kB/s    0:00:00            1.04K 100%    3.18kB/s    0:00:00 (xfr#16, to-chk=5/25)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%   96.68kB/s    0:00:00           97.23K 100%  286.87kB/s    0:00:00 (xfr#17, to-chk=3/25)
-src/
-src/main.c
-         23.00K 100%   67.46kB/s    0:00:00           23.00K 100%   67.46kB/s    0:00:00 (xfr#18, to-chk=2/25)
-src/main.d
-          2.12K 100%    6.21kB/s    0:00:00            2.12K 100%    6.21kB/s    0:00:00 (xfr#19, to-chk=1/25)
-src/main.o
-         22.84K 100%   66.98kB/s    0:00:00           22.84K 100%   66.98kB/s    0:00:00 (xfr#20, to-chk=0/25)
-
-sent 2.30M bytes  received 431 bytes  1.53M bytes/sec
-total size is 2.29M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 20[0m
-[0;32mDestination files: 20[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf    1182 Aug 19 15:32 test_self_creation.sh
--rwxrwx--- 1 root vboxsf  337392 Aug 19 15:29 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212136 Aug 19 15:26 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:30 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 05:09:25 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 05:15:37 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=23/25)
-Makefile
-          3.00K 100%    2.86MB/s    0:00:00            3.00K 100%    2.86MB/s    0:00:00 (xfr#2, to-chk=22/25)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=21/25)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=20/25)
-export.log
-         32.77K  86%   31.25MB/s    0:00:00           38.01K 100%   36.25MB/s    0:00:00 (xfr#5, to-chk=19/25)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=18/25)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=17/25)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=16/25)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=15/25)
-test_self_creation.sh
-          1.18K 100%    1.13MB/s    0:00:00            1.18K 100%    1.13MB/s    0:00:00 (xfr#10, to-chk=14/25)
-vLaunchSELF-stripped.elf
-         32.77K   9%   10.42MB/s    0:00:00          337.39K 100%    1.76MB/s    0:00:00 (xfr#11, to-chk=13/25)
-vLaunchSELF.elf
-         32.77K   2%  171.12kB/s    0:00:06            1.21M 100%    5.45MB/s    0:00:00 (xfr#12, to-chk=12/25)
-vLaunchSELF.self
-         32.77K  34%  150.23kB/s    0:00:00           95.04K 100%  435.74kB/s    0:00:00 (xfr#13, to-chk=11/25)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  149.53kB/s    0:00:02          337.39K 100%    1.27MB/s    0:00:00 (xfr#14, to-chk=8/25)
-build/vLaunchSELF.pkg
-         32.77K  33%  122.14kB/s    0:00:00           99.12K 100%  369.45kB/s    0:00:00 (xfr#15, to-chk=7/25)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    3.86kB/s    0:00:00            1.04K 100%    3.86kB/s    0:00:00 (xfr#16, to-chk=5/25)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  116.36kB/s    0:00:00           97.52K 100%  346.31kB/s    0:00:00 (xfr#17, to-chk=3/25)
-src/
-src/main.c
-         24.14K 100%   85.42kB/s    0:00:00           24.14K 100%   85.42kB/s    0:00:00 (xfr#18, to-chk=2/25)
-src/main.d
-          2.12K 100%    7.49kB/s    0:00:00            2.12K 100%    7.49kB/s    0:00:00 (xfr#19, to-chk=1/25)
-src/main.o
-         24.69K 100%   87.35kB/s    0:00:00           24.69K 100%   87.35kB/s    0:00:00 (xfr#20, to-chk=0/25)
-
-sent 2.30M bytes  received 431 bytes  4.61M bytes/sec
-total size is 2.30M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 20[0m
-[0;32mDestination files: 20[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf    1182 Aug 19 15:32 test_self_creation.sh
--rwxrwx--- 1 root vboxsf  337392 Aug 19 17:15 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212174 Aug 19 17:15 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:30 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 05:15:39 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 05:24:36 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
-          2.69K 100%    0.00kB/s    0:00:00            2.69K 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=23/25)
-Makefile
-          3.00K 100%    2.86MB/s    0:00:00            3.00K 100%    2.86MB/s    0:00:00 (xfr#2, to-chk=22/25)
-README.md
-          2.75K 100%    2.62MB/s    0:00:00            2.75K 100%    2.62MB/s    0:00:00 (xfr#3, to-chk=21/25)
-build.sh
-          1.27K 100%    1.21MB/s    0:00:00            1.27K 100%    1.21MB/s    0:00:00 (xfr#4, to-chk=20/25)
-export.log
-         32.77K  77%   31.25MB/s    0:00:00           42.35K 100%   40.39MB/s    0:00:00 (xfr#5, to-chk=19/25)
-export.sh
-          3.54K 100%    3.38MB/s    0:00:00            3.54K 100%    3.38MB/s    0:00:00 (xfr#6, to-chk=18/25)
-sfo.xml
-            750 100%  732.42kB/s    0:00:00              750 100%  732.42kB/s    0:00:00 (xfr#7, to-chk=17/25)
-test_device_detection
-         16.22K 100%   15.47MB/s    0:00:00           16.22K 100%   15.47MB/s    0:00:00 (xfr#8, to-chk=16/25)
-test_device_detection.c
-          1.22K 100%    1.16MB/s    0:00:00            1.22K 100%    1.16MB/s    0:00:00 (xfr#9, to-chk=15/25)
-test_self_creation.sh
-          1.18K 100%    1.13MB/s    0:00:00            1.18K 100%    1.13MB/s    0:00:00 (xfr#10, to-chk=14/25)
-vLaunchSELF-stripped.elf
-         32.77K   9%   31.25MB/s    0:00:00          337.39K 100%    2.10MB/s    0:00:00 (xfr#11, to-chk=13/25)
-vLaunchSELF.elf
-         32.77K   2%  205.13kB/s    0:00:05            1.21M 100%    6.28MB/s    0:00:00 (xfr#12, to-chk=12/25)
-vLaunchSELF.self
-         32.77K  34%  172.97kB/s    0:00:00           95.04K 100%  501.69kB/s    0:00:00 (xfr#13, to-chk=11/25)
-build/
-build/vLaunchSELF-stripped.elf
-         32.77K   9%  172.97kB/s    0:00:01          337.39K 100%    1.41MB/s    0:00:00 (xfr#14, to-chk=8/25)
-build/vLaunchSELF.pkg
-         32.77K  32%  137.93kB/s    0:00:00           99.82K 100%  420.19kB/s    0:00:00 (xfr#15, to-chk=7/25)
-build/pkg/
-build/pkg/PARAM.SFO
-          1.04K 100%    4.38kB/s    0:00:00            1.04K 100%    4.38kB/s    0:00:00 (xfr#16, to-chk=5/25)
-build/pkg/USRDIR/
-build/pkg/USRDIR/EBOOT.BIN
-         32.77K  33%  125.98kB/s    0:00:00           98.21K 100%  377.58kB/s    0:00:00 (xfr#17, to-chk=3/25)
-src/
-src/main.c
-         28.22K 100%  108.07kB/s    0:00:00           28.22K 100%  108.07kB/s    0:00:00 (xfr#18, to-chk=2/25)
-src/main.d
-          2.12K 100%    8.11kB/s    0:00:00            2.12K 100%    8.11kB/s    0:00:00 (xfr#19, to-chk=1/25)
-src/main.o
-         27.62K 100%  105.76kB/s    0:00:00           27.62K 100%  105.76kB/s    0:00:00 (xfr#20, to-chk=0/25)
-
-sent 2.32M bytes  received 431 bytes  4.63M bytes/sec
-total size is 2.31M  speedup is 1.00
-[0;32m=========================================[0m
-[0;32mExport completed successfully![0m
-[0;34mSetting permissions...[0m
-[0;34mVerifying export...[0m
-[0;32mSource files: 20[0m
-[0;32mDestination files: 20[0m
-[0;32m✓ File count matches - export verified[0m
-[0;34mImportant files in destination:[0m
--rwxrwx--- 1 root vboxsf    2686 Aug 19 14:44 CHANGELOG.md
--rwxrwx--- 1 root vboxsf    2749 Aug 17 19:19 README.md
--rwxrwx--- 1 root vboxsf    1273 Aug 17 18:59 build.sh
--rwxrwx--- 1 root vboxsf    3539 Aug 19 14:49 export.sh
--rwxrwx--- 1 root vboxsf    1219 Aug 19 15:01 test_device_detection.c
--rwxrwx--- 1 root vboxsf    1182 Aug 19 15:32 test_self_creation.sh
--rwxrwx--- 1 root vboxsf  337392 Aug 19 17:24 vLaunchSELF-stripped.elf
--rwxrwx--- 1 root vboxsf 1212280 Aug 19 17:24 vLaunchSELF.elf
--rwxrwx--- 1 root vboxsf   95040 Aug 19 15:30 vLaunchSELF.self
-[0;34m=========================================[0m
-[0;32mExport completed at: Wed Aug 19 05:24:37 PM UTC 2026[0m
-[0;34mDestination: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-[0;34mvLaunchSELF Export Script[0m
-[0;34m=========================================[0m
-[0;32mStarting export at: Wed Aug 19 05:49:15 PM UTC 2026[0m
-[1;33mErasing contents of destination directory: /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;32mSuccessfully erased destination directory contents[0m
-[0;34mCopying files from /home/vtstech/workspace/ps3-filebrowser to /media/sf_!VBoxShared/ps3-filebrowser[0m
-[0;34m=========================================[0m
-sending incremental file list
-./
-CHANGELOG.md
