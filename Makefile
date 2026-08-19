@@ -6,7 +6,7 @@
 
 TARGET := vLaunchSELF
 TARGET_ELF := $(TARGET).elf
-TARGET_STIPPED := $(TARGET)-stripped.elf
+TARGET_STRIPPED := $(TARGET)-stripped.elf
 APPID := HLFB00001
 CONTENTID := UP0001-$(APPID)_00-0000000000000000
 
@@ -34,14 +34,13 @@ all: elf stripped
 elf: $(TARGET_ELF)
 
 # Build stripped ELF (for RPCS3 compatibility)
-stripped: $(TARGET_STIPPED)
+stripped: $(TARGET_STRIPPED)
 
 $(TARGET_ELF): $(OFILES)
 	$(CC) $(OFILES) $(LDFLAGS) $(LIBS) -o $@
 
-$(TARGET_STIPPED): $(TARGET_ELF)
-	@mkdir -p build
-	$(PS3DEV)/ppu/bin/ppu-strip $(TARGET_ELF) -o build/$(TARGET)-stripped.elf
+$(TARGET_STRIPPED): $(TARGET_ELF)
+	$(PS3DEV)/ppu/bin/ppu-strip $< -o $@
 
 -include $(OFILES:.o=.d)
 
@@ -51,14 +50,14 @@ src/%.o: src/%.c
 # Create a SELF file from ELF (using make_self for proper signing)
 self: elf
 	@mkdir -p build
-	@$(PS3DEV)/ppu/bin/ppu-strip $(TARGET).elf -o build/$(TARGET)-stripped.elf
-	@$(PS3DEV)/bin/make_self build/$(TARGET)-stripped.elf $(TARGET).self
+	@$(PS3DEV)/ppu/bin/ppu-strip $(TARGET_ELF) -o ./build/$(TARGET_STRIPPED)
+	@$(PS3DEV)/bin/make_self ./build/$(TARGET_STRIPPED) $(TARGET).self
 	@echo "Built SELF: $(TARGET).self"
 
 # Create a PKG package for PS3 (uses stripped ELF for RPCS3 compatibility)
 pkg: stripped
 	@mkdir -p build/pkg/USRDIR
-	@cp build/$(TARGET)-stripped.elf build/pkg/USRDIR/EBOOT.BIN
+	@cp $(TARGET_STRIPPED) build/pkg/USRDIR/EBOOT.BIN
 	@$(PS3DEV)/bin/sprxlinker build/pkg/USRDIR/EBOOT.BIN 2>/dev/null || true
 	@$(PS3DEV)/bin/sfo -f sfo.xml build/pkg/PARAM.SFO
 	@# Sign EBOOT.BIN with NPDRM for real PS3 compatibility
@@ -71,5 +70,5 @@ all_pkg: pkg self
 
 # Clean build artifacts
 clean:
-	rm -f $(OFILES) $(OFILES:.o=.d) $(TARGET_ELF) $(TARGET_STIPPED) $(TARGET).self
+	rm -f $(OFILES) $(OFILES:.o=.d) $(TARGET_ELF) $(TARGET_STRIPPED) $(TARGET).self
 	rm -rf build
