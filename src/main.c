@@ -62,6 +62,8 @@ static float scale_font = 1.0f;
 typedef struct { 
     char name[MAX_NAME]; 
     int is_dir; 
+    u64 size; 
+    u64 mtime; 
 } file_entry_t;
 
 /* Global state variables */
@@ -284,6 +286,37 @@ static void scan_available_devices(void) {
     }
 }
 
+static void format_file_size(u64 size, char* buffer, size_t buffer_size) {
+    if (size < 1024) {
+        snprintf(buffer, buffer_size, "%lu B", size);
+    } else if (size < 1024 * 1024) {
+        snprintf(buffer, buffer_size, "%.1f KB", (double)size / 1024.0);
+    } else if (size < 1024 * 1024 * 1024) {
+        snprintf(buffer, buffer_size, "%.1f MB", (double)size / (1024.0 * 1024.0));
+    } else {
+        snprintf(buffer, buffer_size, "%.1f GB", (double)size / (1024.0 * 1024.0 * 1024.0));
+    }
+}
+
+static void format_timestamp(u64 mtime, char* buffer, size_t buffer_size) {
+    // PS3 timestamp is in microseconds since Unix epoch
+    // Convert to human readable format
+    // Note: Many PS3 files may have zero timestamps (1970 epoch)
+    time_t timestamp = mtime / 1000000;
+    
+    if (timestamp == 0) {
+        snprintf(buffer, buffer_size, "No date");
+        return;
+    }
+    
+    struct tm* tm_info = gmtime(&timestamp);  // Use gmtime for consistency
+    if (tm_info) {
+        strftime(buffer, buffer_size, "%Y-%m-%d", tm_info);  // Shorter format
+    } else {
+        snprintf(buffer, buffer_size, "No date");
+    }
+}
+
 static void list_directory(void) {
     printf("LIST: %s\n", current_path);
     file_count = 0;
@@ -306,11 +339,19 @@ static void list_directory(void) {
         
         sysFSStat stat;
         files[file_count].is_dir = 0;
+        files[file_count].size = 0;
+        files[file_count].mtime = 0;
+        
         if (sysFsStat(full_path, &stat) == 0) {
             files[file_count].is_dir = ((stat.st_mode >> 12) & 017) == 04;
+            files[file_count].size = stat.st_size;
+            files[file_count].mtime = stat.st_mtime;
         }
+        
         file_count++;
-        printf("  [%d] %s (dir=%d)\n", file_count-1, files[file_count-1].name, files[file_count-1].is_dir);
+        printf("  [%d] %s (dir=%d, size=%lu, time=%lu)\n", 
+               file_count-1, files[file_count-1].name, files[file_count-1].is_dir,
+               files[file_count-1].size, files[file_count-1].mtime);
     }
     sysFsClosedir(fd);
 }
@@ -589,12 +630,140 @@ int main(int argc, char *argv[]) {
                 circle_counter = 0;
             }
             
-            /* TRIANGLE: Go up one directory */
+            /* TRIANGLE: Go up one directory or show device selection at root */
             if (paddata.BTN_TRIANGLE) {
                 triangle_counter--;
-                if (triangle_counter <= 0 && strcmp(current_path, "/dev_hdd0") != 0) {
+                if (triangle_counter <= 0) {
                     char *last_slash = strrchr(current_path, '/');
-                    if (last_slash && last_slash != current_path) {
+                    
+                    /* If we're at the root of a device, show device selection */
+                    if (last_slash == current_path || strlen(current_path) <= 5) {
+                        printf("At device root, showing device selection...\n");
+                        scan_available_devices();
+                        
+                        if (available_devices_count > 1) {
+                            /* Show device selection menu */
+                            printf("Multiple devices available. Select one:\n");
+                            for (int i = 0; i < available_devices_count; i++) {
+                                printf("  [%d] %s\n", i, available_device_paths[i]);
+                            }
+                            printf("Use UP/DOWN to select, CROSS to choose\n");
+                            
+                            /* Start with current device selected */
+                            selected_index = 0;
+                            for (int i = 0; i < available_devices_count; i++) {
+                                if (strcmp(available_device_paths[i], current_path) == 0) {
+                                    selected_index = i;
+                                    break;
+                                }
+                            }
+                            strncpy(current_path, available_device_paths[selected_index], MAX_PATH - 1);
+                            current_path[MAX_PATH - 1] = '\0';
+                            
+                            /* Set device selection mode */
+                            int device_selection_mode = 1;
+                            
+                            while (device_selection_mode) {
+                                sysUtilCheckCallback();
+                                ioPadGetInfo(&padinfo);
+                                
+                                if (padinfo.status[0]) {
+                                    ioPadGetData(0, &paddata);
+                                    
+                                    /* Handle all buttons with debouncing */
+                                    /* CIRCLE: Exit device selection */
+                                    if (paddata.BTN_CIRCLE) {
+                                        circle_counter--;
+                                        if (circle_counter <= 0) {
+                                            printf("CIRCLE pressed - exit\n");
+                                            running = 0;
+                                            device_selection_mode = 0;
+                                            continue;
+                                        }
+                                        circle_counter = INPUT_DELAY_FRAMES;
+                                    } else {
+                                        circle_counter = 0;
+                                    }
+                                    
+                                    /* Handle UP with debouncing */
+                                    if (paddata.BTN_UP) {
+                                        up_counter--;
+                                        if (up_counter <= 0) {
+                                            selected_index = (selected_index + available_devices_count - 1) % available_devices_count;
+                                            strncpy(current_path, available_device_paths[selected_index], MAX_PATH - 1);
+                                            current_path[MAX_PATH - 1] = '\0';
+                                            printf("Selected: %s\n", current_path);
+                                            up_counter = INPUT_DELAY_FRAMES;
+                                        }
+                                    } else {
+                                        up_counter = 0;
+                                    }
+                                    
+                                    /* Handle DOWN with debouncing */
+                                    if (paddata.BTN_DOWN) {
+                                        down_counter--;
+                                        if (down_counter <= 0) {
+                                            selected_index = (selected_index + 1) % available_devices_count;
+                                            strncpy(current_path, available_device_paths[selected_index], MAX_PATH - 1);
+                                            current_path[MAX_PATH - 1] = '\0';
+                                            printf("Selected: %s\n", current_path);
+                                            down_counter = INPUT_DELAY_FRAMES;
+                                        }
+                                    } else {
+                                        down_counter = 0;
+                                    }
+                                    
+                                    /* Handle CROSS with debouncing */
+                                    if (paddata.BTN_CROSS) {
+                                        cross_counter--;
+                                        if (cross_counter <= 0) {
+                                            printf("Selected device %d: %s\n", selected_index, current_path);
+                                            device_selection_mode = 0;
+                                            cross_counter = INPUT_DELAY_FRAMES;
+                                        }
+                                    } else {
+                                        cross_counter = 0;
+                                    }
+                                }
+                                
+                                /* Draw device selection screen */
+                                tiny3d_Clear(0x303030ff, TINY3D_CLEAR_ALL);
+                                draw_background_gradient();
+                                
+                                /* Draw title */
+                                SetFontSize(SF(22), SF(22));
+                                SetFontColor(0xffffffff, 0);
+                                DrawString(SX(35), SY(10), (char*)"Select Device");
+                                
+                                /* Draw device list */
+                                SetFontSize(SF(16), SF(16));
+                                for (int i = 0; i < available_devices_count; i++) {
+                                    if (i == selected_index) {
+                                        SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue for selected */
+                                    } else {
+                                        SetFontColor(0xffffffff, 0);
+                                    }
+                                    char line[280];
+                                    snprintf(line, sizeof(line), "  [%d] %s", i, available_device_paths[i]);
+                                    DrawString(SX(20), SY(60 + i * SF(30)), line);
+                                }
+                                
+                                /* Draw controls */
+                                SetFontSize(SF(14), SF(14));
+                                SetFontColor(0xffffffff, 0);
+                                DrawString(SX(35), SY(350), (char*)"[X] Select  [O] Exit  [↑↓] Navigate");
+                                
+                                tiny3d_Flip();
+                            }
+                            
+                            /* Device selected, now list its contents */
+                            list_directory();
+                        } else {
+                            /* Only one device, just list it */
+                            list_directory();
+                        }
+                    } else {
+                        /* Go up one directory */
                         *last_slash = '\0';  /* Remove last component */
                         if (strlen(current_path) == 0) {
                             strcpy(current_path, "/dev_hdd0");
@@ -675,7 +844,7 @@ int main(int argc, char *argv[]) {
         /* Draw controls */
         SetFontSize(SF(14), SF(14));
         SetFontColor(0xffffffff, 0);
-        DrawString(SX(35), SY(45), (char*)"[X] Enter  [O] Exit  [Triangle] Parent  [Up/Down] Navigate");
+        DrawString(SX(35), SY(45), (char*)"[X] Enter  [O] Exit  [△] Up/Devices  [↑↓] Navigate");
         
         /* Draw current path */
         draw_text_with_path(current_path, 80);
@@ -691,8 +860,19 @@ int main(int argc, char *argv[]) {
             int display_idx = i - start_idx;
             if (i == selected_index) SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue */
             else SetFontColor(0xffffffff, 0);
+            
+            char size_str[32];
+            char time_str[32];
             char line[280];
-            snprintf(line, sizeof(line), "  %s%s", files[i].is_dir ? "[DIR] " : "      ", files[i].name);
+            
+            if (files[i].is_dir) {
+                format_file_size(files[i].size, size_str, sizeof(size_str));
+                snprintf(line, sizeof(line), "[D] %-15s %s", files[i].name, size_str);
+            } else {
+                format_file_size(files[i].size, size_str, sizeof(size_str));
+                format_timestamp(files[i].mtime, time_str, sizeof(time_str));
+                snprintf(line, sizeof(line), "   %-15s %5s %s", files[i].name, size_str, time_str);
+            }
             DrawString(SX(20), SY(95) + display_idx * SY(28), line);
         }
         

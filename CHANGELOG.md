@@ -12,6 +12,10 @@
 - **User Choice**: No longer auto-selects "best" device - user decides which to explore
 - **Visual Feedback**: Selected device highlighted in cyan during selection
 - **Device Status Display**: Shows which devices are available/not available during scan
+- **File Size Display**: Shows file sizes in human-readable format (B, KB, MB, GB)
+- **File Timestamps**: Displays last modified date and time for files
+- **Device Re-selection**: Press Triangle at device root to show device selection menu again
+- **Enhanced File List**: Improved file listing with size and time information
 
 ### Changed
 - **Version Bump**: Updated from v0 to v1.0.0
@@ -31,6 +35,9 @@
 - **Device Display**: Shows available devices with indexed list [0], [1], [2], etc.
 - **Fallback Behavior**: If only one device available, uses it directly (no selection needed)
 - **Error Handling**: Graceful handling when no devices found
+- **File Size Formatting**: Automatic conversion to B/KB/MB/GB units
+- **Timestamp Display**: Human-readable date/time format from PS3 timestamps
+- **Smart Navigation**: Triangle button context-aware (up vs device selection)
 
 ## [0.1.0] - 2024-12-10
 
@@ -69,7 +76,7 @@
 #### File Browser Mode
 - **X Button**: Enter directory / Launch ELF/SELF file
 - **O Button**: Exit application
-- **Triangle Button**: Go up one directory level
+- **Triangle Button**: Go up one directory level OR show device selection at root
 - **Up/Down D-pad**: Navigate through file list
 - **Left/Right D-pad**: Navigate through file list (wrap around)
 
