@@ -72,6 +72,12 @@ static int file_count = 0;
 static int selected_index = 0;
 static char current_path[MAX_PATH] = "/dev_hdd0";
 static volatile int running = 1;
+static u32 gradient_color = 0xff000000; // Black background (matches bg_color)
+
+/* Color arrays for cycling */
+static u32 text_colors[] = {0xffffffff, 0xff0000ff, 0x00ff00ff, 0x0000ffff, 0xffff00ff, 0xff00ffff}; // White, Red, Green, Blue, Yellow, Magenta
+static u32 bg_colors[] = {0xff000000, 0xff0000ff, 0x00ff00ff, 0x0000ffff, 0xff8080ff, 0x808080ff}; // Black, Red, Green, Blue, Light Blue, Gray
+static int color_indices[2] = {0, 0}; // Indices for text and bg colors
 
 /* Font texture memory (from Moonlight ui.c) */
 static void * texture_mem = NULL;
@@ -82,6 +88,8 @@ static int down_counter = 0;
 static int cross_counter = 0;
 static int circle_counter = 0;
 static int triangle_counter = 0;
+static int color_r1_counter = 0;  /* For R1 + direction color cycling */
+static int color_l1_counter = 0;  /* For L1 + direction color cycling */
 
 /**
  * 8x8 bitmap font glyph data
@@ -198,44 +206,25 @@ static void sysutil_exit_callback(u64 status, u64 param, void *usrdata) {
 }
 
 /**
- * Draw the background gradient for the UI
- * Creates a dark gradient background with a blue title bar
+ * Draw the background for the UI
+ * Creates a solid color background area (formerly gradient)
  */
 static void draw_background_gradient(void) {
-    /* 1. Base Dark Gray Background (#303030 to #242424) */
+    /* Convert gradient color to floating point for tiny3d */
+    float r = ((gradient_color >> 16) & 0xFF) / 255.0f;  // Red in bits 23-16
+    float g = ((gradient_color >> 8) & 0xFF) / 255.0f;   // Green in bits 15-8  
+    float b = (gradient_color & 0xFF) / 255.0f;          // Blue in bits 7-0
+    
+    /* Draw simple full-screen solid background only */
     tiny3d_SetPolygon(TINY3D_TRIANGLE_STRIP);
     tiny3d_VertexPos(0, 0, 65535);
-    tiny3d_VertexFcolor(0.188f, 0.188f, 0.188f, 1.0f); // #303030
+    tiny3d_VertexFcolor(r, g, b, 1.0f);
     tiny3d_VertexPos(width, 0, 65535);
-    tiny3d_VertexFcolor(0.188f, 0.188f, 0.188f, 1.0f);
-    tiny3d_VertexPos(0, height * 0.72f, 65535);
-    tiny3d_VertexFcolor(0.141f, 0.141f, 0.141f, 1.0f); // #242424
-    tiny3d_VertexPos(width, height * 0.72f, 65535);
-    tiny3d_VertexFcolor(0.141f, 0.141f, 0.141f, 1.0f);
-    tiny3d_End();
-
-    /* 2. Titlebar Header Bar (#3F51B5 Material Indigo Blue) */
-    tiny3d_SetPolygon(TINY3D_TRIANGLE_STRIP);
-    tiny3d_VertexPos(0, 0, 65535);
-    tiny3d_VertexFcolor(0.247f, 0.318f, 0.710f, 1.0f); // #3F51B5
-    tiny3d_VertexPos(width, 0, 65535);
-    tiny3d_VertexFcolor(0.247f, 0.318f, 0.710f, 1.0f);
-    tiny3d_VertexPos(0, SY(64), 65535);
-    tiny3d_VertexFcolor(0.200f, 0.260f, 0.620f, 1.0f);
-    tiny3d_VertexPos(width, SY(64), 65535);
-    tiny3d_VertexFcolor(0.200f, 0.260f, 0.620f, 1.0f);
-    tiny3d_End();
-
-    /* 3. Titlebar Bottom Accent Line (#1A237E Deep Indigo) */
-    tiny3d_SetPolygon(TINY3D_TRIANGLE_STRIP);
-    tiny3d_VertexPos(0, SY(64), 65535);
-    tiny3d_VertexFcolor(0.102f, 0.137f, 0.494f, 1.0f); // #1A237E
-    tiny3d_VertexPos(width, SY(64), 65535);
-    tiny3d_VertexFcolor(0.102f, 0.137f, 0.494f, 1.0f);
-    tiny3d_VertexPos(0, SY(67), 65535);
-    tiny3d_VertexFcolor(0.102f, 0.137f, 0.494f, 1.0f);
-    tiny3d_VertexPos(width, SY(67), 65535);
-    tiny3d_VertexFcolor(0.102f, 0.137f, 0.494f, 1.0f);
+    tiny3d_VertexFcolor(r, g, b, 1.0f);
+    tiny3d_VertexPos(0, height, 65535);
+    tiny3d_VertexFcolor(r, g, b, 1.0f);
+    tiny3d_VertexPos(width, height, 65535);
+    tiny3d_VertexFcolor(r, g, b, 1.0f);
     tiny3d_End();
 }
 
@@ -483,6 +472,12 @@ int main(int argc, char *argv[]) {
     
     printf("=== vLaunchSELF v1 Starting ===\n");
     
+    /* Color variables - fixed colors */
+    u32 text_color = 0xffffffff;  // White text
+    u32 bg_color = 0xff000000;   // Black background
+    
+    /* Fixed colors - no cycling */
+    
     /* Scan for available devices */
     scan_available_devices();
     
@@ -570,19 +565,23 @@ int main(int argc, char *argv[]) {
                 } else {
                     cross_counter = 0;
                 }
+            } else {
+                color_l1_counter = 0;
             }
             
             /* Draw device selection screen */
-            tiny3d_Clear(0x303030ff, TINY3D_CLEAR_ALL);
+            tiny3d_Clear(bg_color, TINY3D_CLEAR_ALL);
             draw_background_gradient();
             
-            /* Draw title */
-            SetFontSize(SF(22), SF(22));
-            SetFontColor(0xffffffff, 0);
+            
+        
+        /* Draw title */
+        SetFontSize(SF(22), SF(22));
+            SetFontColor(text_color, 0);
             DrawString(SX(35), SY(10), (char*)"Select Device");
             
             /* Draw device list */
-            SetFontSize(SF(16), SF(16));
+        SetFontSize(SF(16), SF(16));
             for (int i = 0; i < available_devices_count; i++) {
                 if (i == selected_index) {
                     SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue for selected */
@@ -595,15 +594,14 @@ int main(int argc, char *argv[]) {
             }
             
             /* Draw controls */
-            SetFontSize(SF(14), SF(14));
-            SetFontColor(0xffffffff, 0);
+        SetFontSize(SF(14), SF(14));
+            SetFontColor(text_color, 0);
             DrawString(SX(35), SY(350), (char*)"[X] Select  [O] Exit  [Up/Down] Navigate");
             
             tiny3d_Flip();
         }
         
-        /* Device selected, now list its contents */
-        list_directory();
+        
     }
     
     printf("Total files: %d\n", file_count);
@@ -728,12 +726,12 @@ int main(int argc, char *argv[]) {
                                 }
                                 
                                 /* Draw device selection screen */
-                                tiny3d_Clear(0x303030ff, TINY3D_CLEAR_ALL);
+                                tiny3d_Clear(bg_color, TINY3D_CLEAR_ALL);
                                 draw_background_gradient();
                                 
                                 /* Draw title */
                                 SetFontSize(SF(22), SF(22));
-                                SetFontColor(0xffffffff, 0);
+                                SetFontColor(text_color, 0);
                                 DrawString(SX(35), SY(10), (char*)"Select Device");
                                 
                                 /* Draw device list */
@@ -751,8 +749,8 @@ int main(int argc, char *argv[]) {
                                 
                                 /* Draw controls */
                                 SetFontSize(SF(14), SF(14));
-                                SetFontColor(0xffffffff, 0);
-                                DrawString(SX(35), SY(350), (char*)"[X] Select  [O] Exit  [↑↓] Navigate");
+                                SetFontColor(text_color, 0);
+                                DrawString(SX(35), SY(350), (char*)"[X] Select  [O] Exit  [U/D] Navigate");
                                 
                                 tiny3d_Flip();
                             }
@@ -777,6 +775,44 @@ int main(int argc, char *argv[]) {
                 }
             } else {
                 triangle_counter = 0;
+            }
+            
+            /* Color cycling removed - L1 functionality will be re-implemented */
+            }
+            
+            /* Handle L1 color changing with debouncing */
+            if (paddata.BTN_L1) {
+                if (paddata.BTN_UP) {
+                    color_l1_counter--;
+                    if (color_l1_counter <= 0) {
+                        color_indices[1] = (color_indices[1] + 1) % (sizeof(bg_colors) / sizeof(bg_colors[0]));
+                    bg_color = bg_colors[color_indices[1]];
+                        gradient_color = bg_color;
+                        color_l1_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else if (paddata.BTN_DOWN) {
+                    color_l1_counter--;
+                    if (color_l1_counter <= 0) {
+                        color_indices[1] = (color_indices[1] + sizeof(bg_colors) / sizeof(bg_colors[0]) - 1) % (sizeof(bg_colors) / sizeof(bg_colors[0]));
+                    bg_color = bg_colors[color_indices[1]];
+                        gradient_color = bg_color;
+                        color_l1_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else if (paddata.BTN_LEFT) {
+                    color_l1_counter--;
+                    if (color_l1_counter <= 0) {
+                        color_indices[0] = (color_indices[0] + sizeof(text_colors) / sizeof(text_colors[0]) - 1) % (sizeof(text_colors) / sizeof(text_colors[0]));
+                    text_color = text_colors[color_indices[0]];
+                        color_l1_counter = INPUT_DELAY_FRAMES;
+                    }
+                } else if (paddata.BTN_RIGHT) {
+                    color_l1_counter--;
+                    if (color_l1_counter <= 0) {
+                        color_indices[0] = (color_indices[0] + 1) % (sizeof(text_colors) / sizeof(text_colors[0]));
+                    text_color = text_colors[color_indices[0]];
+                        color_l1_counter = INPUT_DELAY_FRAMES;
+                    }
+                }
             }
             
             /* Handle UP with debouncing */
@@ -829,23 +865,20 @@ int main(int argc, char *argv[]) {
             } else {
                 cross_counter = 0;
             }
-        }
-        
-        /* Clear screen with dark gray */
-        tiny3d_Clear(0x303030ff, TINY3D_CLEAR_ALL);
-        
-        /* Draw background gradient */
-        draw_background_gradient();
+                
+        /* Clear screen with black background */
+        printf("DEBUG: bg_color = %08X, gradient_color = %08X\n", bg_color, gradient_color);
+        tiny3d_Clear(bg_color, TINY3D_CLEAR_ALL);
         
         /* Draw title */
         SetFontSize(SF(22), SF(22));
-        SetFontColor(0xffffffff, 0);
+        SetFontColor(text_color, 0);
         DrawString(SX(35), SY(10), (char*)"vLaunchSELF v1");
         
         /* Draw controls */
         SetFontSize(SF(14), SF(14));
-        SetFontColor(0xffffffff, 0);
-        DrawString(SX(35), SY(45), (char*)"[X] Enter  [O] Exit  [△] Up/Devices  [↑↓] Navigate");
+        SetFontColor(text_color, 0);
+        DrawString(SX(35), SY(45), (char*)"[X] Enter  [O] Exit  [Triangle] Up  [Arrows] Navigate");
         
         /* Draw current path */
         draw_text_with_path(current_path, 80);
@@ -859,8 +892,8 @@ int main(int argc, char *argv[]) {
         
         for (int i = start_idx; i < end_idx; i++) {
             int display_idx = i - start_idx;
-            if (i == selected_index) SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue */
-            else SetFontColor(0xffffffff, 0);
+            if (i == selected_index) SetFontColor(0xff82b1ff, 0);  /* Light Material Cyan/Blue for selected */
+            else SetFontColor(text_color, 0);
             
             char size_str[32];
             char time_str[32];

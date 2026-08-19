@@ -1,6 +1,31 @@
 # vLaunchSELF Changelog
 
 
+## [1.0.1] - 08-19-2026 6:51:33 PM
+
+### Added
+- **Custom Application Icon**: Added ICON0.PNG for PS3 XMB display
+- **Hidden Color Feature**: L1 + D-pad color controls (no UI clutter, documented feature)
+- **Proper Color Debouncing**: Implemented debouncing matching file navigation controls
+- **Clean UI Design**: Removed color control hints from interface for professional appearance
+
+### Changed
+- **PKG Build System**: Updated Makefile to include ICON0.PNG in package creation
+- **Package Structure**: Now includes custom icon for better PS3 integration
+- **UI Polish**: Professional appearance without cluttered control hints
+
+### Fixed
+- **Icon Missing**: PKG now includes ICON0.PNG for proper XMB display
+- **Build Process**: Updated Makefile to copy icon during package creation
+
+### Technical Details
+- **Custom Icon**: ICON0.PNG included in PKG for PS3 XMB display
+- **PKG Build System**: Updated Makefile to include ICON0.PNG in package creation
+- **Hidden Features**: L1 + D-pad color cycling (documented but not displayed in UI)
+- **Professional UI**: Clean interface without cluttered control hints
+- **Package Size**: Increased to ~158KB to accommodate icon file
+- **Icon Support**: Custom ICON0.PNG for PS3 XMB display
+
 ## [1.0.0] - 08-19-2026 2:29:39 PM
 
 ### Added
@@ -15,6 +40,18 @@
 - **File Timestamps**: Displays last modified date and time in MM-DD-YYYY HH:MM format
 - **Device Re-selection**: Press Triangle at device root to show device selection menu again
 - **Enhanced File List**: Improved file listing with size and time information
+- **Black Background**: Changed from gray to black background for better contrast
+- **Simplified Color System**: Two-color cycling with R1/L1 modifier keys
+- **Text Color Cycling**: R1 + Direction cycles through 7 text colors
+- **Unified Background Cycling**: L1 + Direction changes both background and box together (6 colors)
+- **Solid Color Design**: Replaced gradient with solid colors for cleaner look
+- **Infinite Color Options**: Direction buttons cycle through colors infinitely in both directions
+- **Color Input Debouncing**: Prevents rapid color changes when holding direction buttons
+- **Unified Background**: Background and gradient box now use the exact same color
+- **Custom Application Icon**: Added ICON0.PNG for PS3 XMB display
+- **Hidden Color Feature**: L1 + D-pad color controls (no UI clutter, documented feature)
+- **Proper Color Debouncing**: Implemented debouncing matching file navigation controls
+- **Clean UI Design**: Removed color control hints from interface for professional appearance
 
 ### Changed
 - **Version Bump**: Updated from v0 to v1.0.0
@@ -38,6 +75,12 @@
 - **Timestamp Display**: MM-DD-YYYY HH:MM format with time information
 - **Smart Navigation**: Triangle button context-aware (up vs device selection)
 - **TitleID**: VTSTECH02 (PS3 application identifier)
+- **Enhanced Color System**: Two independent color controls with debouncing and unified design
+- **Text Colors**: 7-color palette (White/Red/Green/Blue/Yellow/Magenta/Cyan) with debouncing
+- **Background Colors**: 6-color palette (Black/Red/Green/Blue/Gray/Dark) for entire UI
+- **Solid Color Design**: Clean, consistent solid colors throughout the interface
+- **Bidirectional Cycling**: UP/DOWN/LEFT/RIGHT all cycle colors in different directions
+- **Input Debouncing**: Prevents rapid color changes with 10-frame delay between inputs
 
 ## [0.1.0] - 08-17-2026 1:00:39 PM
 
@@ -79,6 +122,18 @@
 - **Triangle Button**: Go up one directory level OR show device selection at root
 - **Up/Down D-pad**: Navigate through file list
 - **Left/Right D-pad**: Navigate through file list (wrap around)
+
+#### Color Cycling (Hold + Direction) - Debounced
+- **R1 + Direction**: Cycle through text colors (7 colors) with debouncing
+- **L1 + Direction**: Cycle through unified background colors (6 colors) with debouncing
+
+#### Color Options
+- **Text Colors**: White → Red → Green → Blue → Yellow → Magenta → Cyan
+- **Background Colors**: Black → Red → Green → Blue → Gray → Dark Gray (6 colors total)
+
+#### Button Labels
+- **[T]**: Triangle button (Up/Devices function)
+- **[U/D]**: Up/Down navigation buttons
 
 ### Technical Details
 - Built using PSL1GHT toolchain

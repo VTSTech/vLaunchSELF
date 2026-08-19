@@ -65,6 +65,8 @@ pkg: stripped
 	@mkdir -p build/pkg/USRDIR
 	@echo "Copying stripped ELF to EBOOT.BIN..."
 	@cp $(TARGET_STRIPPED) build/pkg/USRDIR/EBOOT.BIN
+	@echo "Copying ICON0.PNG..."
+	@cp ICON0.PNG build/pkg/ICON0.PNG
 	@echo "Before signing:"
 	@ls -la build/pkg/USRDIR/EBOOT.BIN
 	@$(PS3DEV)/bin/sprxlinker build/pkg/USRDIR/EBOOT.BIN 2>/dev/null || true
