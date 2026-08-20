@@ -88,8 +88,11 @@ static int down_counter = 0;
 static int cross_counter = 0;
 static int circle_counter = 0;
 static int triangle_counter = 0;
+static int device_cross_counter = 0;  /* Separate counter for device selection */
+static int device_selected = 0;  /* Flag to indicate device was selected, wait for next frame */
 static int color_r1_counter = 0;  /* For R1 + direction color cycling */
 static int color_l1_counter = 0;  /* For L1 + direction color cycling */
+static int device_selection_mode = 0;  /* Global flag for device selection mode */
 
 /**
  * 8x8 bitmap font glyph data
@@ -315,6 +318,7 @@ static void list_directory(void) {
         printf("ERROR: Can't open %s\n", current_path);
         return;
     }
+
     
     sysFSDirent entry;
     u64 bytes_read;
@@ -502,7 +506,7 @@ int main(int argc, char *argv[]) {
         current_path[MAX_PATH - 1] = '\0';
         
         /* Set device selection mode */
-        int device_selection_mode = 1;
+        device_selection_mode = 1;
         
         while (device_selection_mode) {
             sysUtilCheckCallback();
@@ -560,6 +564,8 @@ int main(int argc, char *argv[]) {
                     if (cross_counter <= 0) {
                         printf("Selected device %d: %s\n", selected_index, current_path);
                         device_selection_mode = 0;
+                        device_selected = 1;  /* Set flag to list directory in next frame */
+
                         cross_counter = INPUT_DELAY_FRAMES;
                     }
                 } else {
@@ -609,6 +615,17 @@ int main(int argc, char *argv[]) {
     
     /* Main loop */
     while (running) {
+        
+        /* Handle device selection flag */
+        if (device_selected) {
+
+            /* Add a small delay to ensure system is ready */
+            sysUtilCheckCallback();
+            list_directory();
+            device_selected = 0;  /* Reset flag */
+
+        }
+        
         sysUtilCheckCallback();
         ioPadGetInfo(&padinfo);
         
@@ -660,7 +677,7 @@ int main(int argc, char *argv[]) {
                             current_path[MAX_PATH - 1] = '\0';
                             
                             /* Set device selection mode */
-                            int device_selection_mode = 1;
+                            device_selection_mode = 1;
                             
                             while (device_selection_mode) {
                                 sysUtilCheckCallback();
@@ -714,14 +731,17 @@ int main(int argc, char *argv[]) {
                                     
                                     /* Handle CROSS with debouncing */
                                     if (paddata.BTN_CROSS) {
-                                        cross_counter--;
-                                        if (cross_counter <= 0) {
+                                        printf("DEBUG: Device selection X pressed, counter=%d\n", device_cross_counter);
+                                        device_cross_counter--;
+                                        if (device_cross_counter <= 0) {
                                             printf("Selected device %d: %s\n", selected_index, current_path);
                                             device_selection_mode = 0;
-                                            cross_counter = INPUT_DELAY_FRAMES;
+                                            device_selected = 1;  /* Set flag to list directory in next frame */
+
+                                            device_cross_counter = INPUT_DELAY_FRAMES;
                                         }
                                     } else {
-                                        cross_counter = 0;
+                                        device_cross_counter = 0;
                                     }
                                 }
                                 
@@ -755,11 +775,9 @@ int main(int argc, char *argv[]) {
                                 tiny3d_Flip();
                             }
                             
-                            /* Device selected, now list its contents */
-                            list_directory();
+                            /* Device selected, will list directory in next frame */
                         } else {
-                            /* Only one device, just list it */
-                            list_directory();
+                            /* Only one device, will list directory in next frame */
                         }
                     } else {
                         /* Go up one directory */
@@ -839,6 +857,8 @@ int main(int argc, char *argv[]) {
                 down_counter = 0;
             }
             
+
+            
             /* Handle CROSS with debouncing */
             if (paddata.BTN_CROSS) {
                 cross_counter--;
@@ -867,7 +887,7 @@ int main(int argc, char *argv[]) {
             }
                 
         /* Clear screen with black background */
-        printf("DEBUG: bg_color = %08X, gradient_color = %08X\n", bg_color, gradient_color);
+        
         tiny3d_Clear(bg_color, TINY3D_CLEAR_ALL);
         
         /* Draw title */

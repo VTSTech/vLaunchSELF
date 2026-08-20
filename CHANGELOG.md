@@ -1,7 +1,7 @@
 # vLaunchSELF Changelog
 
 
-## [1.0.1] - 08-19-2026 6:51:33 PM
+## [1.0.1] - 08-19-2026 11:52:00 PM
 
 ### Added
 - **Custom Application Icon**: Added ICON0.PNG for PS3 XMB display
@@ -17,6 +17,16 @@
 ### Fixed
 - **Icon Missing**: PKG now includes ICON0.PNG for proper XMB display
 - **Build Process**: Updated Makefile to copy icon during package creation
+
+### Fixed
+- **Device Selection Timing**: Added sysUtilCheckCallback() delay to prevent "cannot read directory" errors on first device selection
+- **Device Selection Debouncing**: Fixed X button conflict between device selection and file navigation using separate counters
+- **Device Selection Timing**: Fixed immediate directory listing issue by adding state flag and delayed execution
+- **Debug Messages**: Added comprehensive debug output to diagnose device selection flow
+- **Directory Listing Debug**: Added detailed debug messages for sysFsOpendir and readdir operations
+- **Flag Handling Debug**: Added debug messages to verify device selection flag is being processed
+- **Main Loop Structure Fix**: Fixed device selection flag placement inside main loop to ensure proper execution
+- **Device Selection Flag Integration**: Added device_selected flag setting to main device selection logic to ensure list_directory() is called
 
 ### Technical Details
 - **Custom Icon**: ICON0.PNG included in PKG for PS3 XMB display
